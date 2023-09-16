@@ -55,6 +55,11 @@ export const Navbar = () => {
                             <NavLink to="/about" className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>About Us</NavLink>
                             <div className={({ isActive }) => {`h-0.5 ${isActive ? "bg-green-500" : "bg-green-500 scale-x-0 group-hover:scale-100 transition-transform origin-left rounded-full duration-300 ease-out"}`}}></div>
                         </li>
+                        <li className="text-lg md:text-base lg:text-lg font-medium group flex-end ">
+                            <button className = "bg-green-500 p-3 rounded-2xl">
+                                <NavLink to="/login" className={`text-lg md:text-base lg:text-lg  font-medium group text-white font-bold`}>Login</NavLink>
+                            </button>
+                        </li>
                     </ul>
                 </div>
                 <button
@@ -70,10 +75,10 @@ export const Navbar = () => {
                     isMenuOpen ? 'mt-16' : ''
                 }`}
             >
-                <div className="flex  p-2 w-full border border-gray-300 space-x-2 rounded-lg items-center">
-                    <BiSearchAlt className = "text-2xl"/>
+                <div className="flex  p-2 w-full border border-green-600 space-x-2 rounded-lg items-center">
+                    <BiSearchAlt className = "text-2xl text-green-600"/>
                     <input
-                        className="w-full  outline-none border-transparent focus:border-transparent focus:ring-0 rounded-lg text-sm sm:text-base"
+                        className="w-full  outline-none border-transparent focus:border-transparent focus:ring-0 rounded-lg text-sm sm:text-base placeholder-blue-500"
                         type="text"
                         placeholder="Search your Place"
                     />

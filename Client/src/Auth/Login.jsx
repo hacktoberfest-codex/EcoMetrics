@@ -1,8 +1,8 @@
 import  { useState } from 'react';
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
-import LoginLogo from '../../assets/Login.svg';
+import login from "../src/assets/login.svg"
 import { Link } from 'react-router-dom';
-export default function Login({ onLogin }) {
+export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
@@ -36,8 +36,8 @@ export default function Login({ onLogin }) {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                onLogin(data);
+                // const data = await response.json();
+                // onLogin(data);
             } else {
                 throw new Error('Login failed');
             }
@@ -47,12 +47,26 @@ export default function Login({ onLogin }) {
         }
     };
 
+
     return (
-        <div className="bg-[#fcf4f3] min-w-screen min-h-screen flex items-center justify-center px-5 py-5 font-Rajdhani">
-            <div className="text-gray-500 rounded-3xl shadow-[#fad4d1] shadow-xl w-full overflow-hidden" style={{ maxWidth: '1000px' }}>
+        <div>
+            <div className="max-w-7xl  px-4 sm:px-6 lg:px-8 mt-10 mx-60">
+                <div className="flex items-center space-x-2 text-[#f07167] text-sm">
+                    <Link to="/" className="hover:underline hover:text-gray-600">Home</Link>
+                    <span>
+            <svg className="h-5 w-5 leading-none text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+                    <Link to="/login" className="hover:underline hover:text-gray-600">Login Page</Link>
+                </div>
+            </div>
+        <div className="min-w-screen  flex items-center justify-center px-5 py-5 font-Rajdhani">
+            <div className="text-gray-500 rounded-3xl shadow-gray-200 shadow-xl w-full overflow-hidden" style={{ maxWidth: '1000px' }}>
                 <div className="md:flex w-full">
                     <div className="hidden md:block w-1/2 py-10 px-10">
-                        <img src={LoginLogo} alt="logo" className="w-full" />
+                        <img src={login} alt="logo" className="w-full" />
                     </div>
                     <div className="w-full md:w-1/2 px-4 py-20 md:px-10">
                         <h2 className="mb-2 text-4xl font-bold text-[#f07167] font-Raleway">Login</h2>
@@ -118,6 +132,7 @@ export default function Login({ onLogin }) {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 }
