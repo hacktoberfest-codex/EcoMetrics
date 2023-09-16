@@ -1,7 +1,30 @@
+// const express=require("express")
+// const connect=require("./controllers/connect")
+// const routes=require("./routes/route")
+// const cors=require('cors')
+// const app=express() 
+// app.use(cors({ 
+// 	origin:'*'
+// })) 
+// app.use(express.json()) 
+// app.use(express.urlencoded({extended:true}))
+// const run=async()=>connect();
+// run()
+// app.get('/',(req,res)=>{
+// 	res.json({message:"hello"}) 
+// })
+// app.use('/login',routes)
+
+// app.listen(5000,()=>{console.log(`Server started @ http:/localhost`);})
+
+
+
 import express, { response } from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import { Configuration, OpenAIApi } from "openai";
+import connect from "./controllers/connect.js";
+import router from "./routes/route.js";
 
 dotenv.config();
 const configuration = new Configuration({
@@ -11,8 +34,17 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const app = express();
-app.use(cors());
+app.use(cors({ 
+	origin:'*'
+}))
+
 app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+
+const run=async()=>connect();
+run()
+
+app.use('/login',router)
 
 app.get("/aichatbot", async (req, res) => {
   res.status(200).send({
@@ -23,6 +55,12 @@ app.get("/aqi", async (req, res) => {
   res.status(200).send({
     message: "This is the Route of the openweatherapp aqi",
   });
+});
+app.get("/login", async (req, res) => {
+  res.status(200).send({
+    message: "This is the Route of the Auth",
+  });
+  
 });
 app.get("/", async (req, res) => {
   res.status(200).send({
@@ -62,6 +100,7 @@ startDate.setDate(endDate.getDate() - 7);
 // Convert both dates to Unix timestamps (in seconds)
 const startTimestamp = Math.floor(startDate.getTime() / 1000);
 const endTimestamp = Math.floor(endDate.getTime() / 1000);
+
 const apiKey = process.env.OPENWEATHER_API_KEY;
 app.post("/aqi", async (req, res) => {
   console.log(req.body.prompt);
