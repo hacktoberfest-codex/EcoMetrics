@@ -17,6 +17,7 @@ try {
 	const user=new User(data);
 	await user.save() 
 	res.json({message:"success",user:user});
+
 } catch (error) {
 	// res.send("Not added Successfully !")
 	console.log(error);
@@ -37,9 +38,11 @@ const authData=async(req,res)=>{
 
 			if(!auth){
 				 res.json({message:"Wrong Credentials !"});
-			}
-			else	
-			res.json({message:"authorized"});
+				 
+				}
+				else	
+				res.json({message:"authorized"});
+				navigate('/About')
 					
 		}
 			
