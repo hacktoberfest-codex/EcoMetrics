@@ -16,9 +16,6 @@
 // app.use('/login',routes)
 
 // app.listen(5000,()=>{console.log(`Server started @ http:/localhost`);})
-
-
-
 import express, { response } from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
@@ -66,6 +63,12 @@ app.get("/", async (req, res) => {
   res.status(200).send({
     message: "Hi Am UP and running this is the home route",
   });
+});
+app.get("/loca", async (req, res) => {
+  res.status(200).send({
+    message: "This is the Route of the location",
+  });
+  
 });
 
 app.post("/aichatbot", async (req, res) => {
@@ -135,6 +138,29 @@ app.post("/aqi", async (req, res) => {
       console.log("Error occurred:", error);
     });
 });
+  app.post("/loca", async (req, res) => {
+    try {
+      const {lat,lon}=req.body;
+      const apiUrl = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.cod === "404") {
+            console.log("Location not found.");
+            return;
+          }
+          res.status(200).send({
+            bot: data,
+          });
+        })
+        .catch((error) => {
+          console.log("Error occurred:", error);
+        });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error || "Something went wrong");
+    }
+  });
 
 app.listen(5000, () =>
   console.log("AI server started on http://localhost:5000")
