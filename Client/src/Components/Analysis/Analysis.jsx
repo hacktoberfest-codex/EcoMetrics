@@ -1,7 +1,8 @@
-export function Analysis() {
+import {Graph} from "..//Graph/Graph.jsx";
+export default function Analysis() {
     return (
         <>
-
+            <Graph/>
         </>
     )
 }

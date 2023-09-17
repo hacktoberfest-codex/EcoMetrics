@@ -5,15 +5,25 @@ import './index.css'
 import Layout from "./Components/Layout/Layout.jsx";
 import About from "./Components/About/About.jsx";
 import Login from "../src/Auth/Login.jsx";
-import {SignUp} from "./Auth/SignUp.jsx";
+import SignUp from "./Auth/SignUp.jsx";
+import Home from "./Home/Home.jsx";
+import Analysis from "./Components/Analysis/Analysis.jsx";
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Layout/>,
         children: [
             {
+                path: "/",
+                element: <Home />,
+            },
+            {
                 path: "About",
                 element: <About />,
+            },
+            {
+                path: "Analysis",
+                element: <Analysis/>
             }
 
         ],

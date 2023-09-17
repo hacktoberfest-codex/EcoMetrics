@@ -1,7 +1,7 @@
 export default function About() {
     return (
         <div
-            className="  flex flex-col w-full items-center mt-10"
+            className=" h-screen flex flex-col w-full items-center mt-10"
             id="about"
         >
             <p className="font-Playfair font-bold text-green-500 text-4xl">About Us</p>

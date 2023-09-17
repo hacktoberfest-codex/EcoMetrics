@@ -16,7 +16,7 @@ export const Navbar = () => {
 
     return (
         <navbar>
-            <nav className="flex justify-between items-center py-4 md:py-8 px-6 mx-auto max-w-screen-xl md:px-12 lg:px-16 xl:px-24">
+            <nav className="flex justify-between items-center py-4 md:py-8 px-6 mx-auto max-w-screen-xl md:px-12 lg:px-16 xl:px-24  ">
                 <button
                     className={`mt-8 block md:hidden relative z-30 focus:outline-none transform -translate-x-1/2 -translate-y-1/2 active:scale-75 transition-transform ${
                         isMenuOpen ? '' : ''
@@ -36,28 +36,54 @@ export const Navbar = () => {
                 >
                     <ul className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6 lg:md:-x-8">
                         <li className="text-lg md:text-base lg:text-lg font-medium group">
-                            <NavLink to="/" className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>Home</NavLink>
-                            <div className={`h-0.5  "bg-green-500 scale-x-0 group-hover:scale-100 transition-transform origin-left rounded-full duration-300 ease-out"}`}></div>
+                            <NavLink
+                                exact
+                                to="/"
+                                className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>
+                                Home
+                            </NavLink>
+                            <div className={`h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full duration-300 ease-out`}></div>
                         </li>
                         <li className="text-lg md:text-base lg:text-lg font-medium group">
-                            <NavLink to="/Analysis" className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>Analysis</NavLink>
-                            <div className={({ isActive }) => {`h-0.5 ${isActive ? "bg-green-500" : "bg-green-500 scale-x-0 group-hover:scale-100 transition-transform origin-left rounded-full duration-300 ease-out"}`}}></div>
+                            <NavLink
+                                to="/Analysis"
+                                className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>
+                                Analysis
+                            </NavLink>
+                            <div className={`h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full duration-300 ease-out`}></div>
                         </li>
                         <li className="text-lg md:text-base lg:text-lg font-medium group">
-                            <NavLink to="/Prevention" className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>Prevention</NavLink>
-                            <div className={({ isActive }) => {`h-0.5 ${isActive ? "bg-green-500" : "bg-green-500 scale-x-0 group-hover:scale-100 transition-transform origin-left rounded-full duration-300 ease-out"}`}}></div>
+                            <NavLink
+                                to="/Prevention"
+                                className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>
+                                Prevention
+                            </NavLink>
+                            <div className={`h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full duration-300 ease-out`}></div>
                         </li>
                         <li className="text-lg md:text-base lg:text-lg font-medium group">
-                            <NavLink to="/ChatBot" className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>ChatBot</NavLink>
-                            <div className={({ isActive }) => {`h-0.5 ${isActive ? "bg-green-500" : "bg-green-500 scale-x-0 group-hover:scale-100 transition-transform origin-left rounded-full duration-300 ease-out"}`}}></div>
+                            <NavLink
+                                to="/ChatBot"
+                                className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}
+                            >
+                                Education
+                            </NavLink>
+                            <div className={`h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full duration-300 ease-out`}></div>
                         </li>
                         <li className="text-lg md:text-base lg:text-lg font-medium group">
-                            <NavLink to="/about" className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>About Us</NavLink>
-                            <div className={({ isActive }) => {`h-0.5 ${isActive ? "bg-green-500" : "bg-green-500 scale-x-0 group-hover:scale-100 transition-transform origin-left rounded-full duration-300 ease-out"}`}}></div>
+                            <NavLink
+                                exact
+                                to="/about"
+                                className={({ isActive }) => `text-lg md:text-base lg:text-lg ${isActive ? "text-green-500" : "text-gray-700"} font-medium group`}>
+                                About Us
+                            </NavLink>
+                            <div className={`h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full duration-300 ease-out`}></div>
+
                         </li>
-                        <li className="text-lg md:text-base lg:text-lg font-medium group flex-end ">
-                            <button className = "bg-green-500 p-3 rounded-2xl">
-                                <NavLink to="/login" className={`text-lg md:text-base lg:text-lg  font-medium group text-white font-bold`}>Login</NavLink>
+                        <li className="text-lg md:text-base lg:text-lg font-medium group flex-end">
+                            <button className="bg-green-500 py-2 px-3 rounded-2xl">
+                                <NavLink to="/login" className="text-lg md:text-base lg:text-lg font-medium group text-white">
+                                    Login
+                                </NavLink>
                             </button>
                         </li>
                     </ul>
@@ -67,7 +93,7 @@ export const Navbar = () => {
     rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500 focus:outline-none"
                     onClick={toggleSearch}
                 >
-                    <BiSearchAlt className={"text-4xl"}/>
+                    <BiSearchAlt className={"text-2xl"}/>
                 </button>
             </nav>
             <div
