@@ -255,7 +255,6 @@ import React, { useState } from 'react'
 // import '../app/globals.css'
 // import { useRouter } from 'next/router';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 // import Navbar from '@/component/Navbar';
 // import Footer from '@/component/Footer';
 const page = () => {
