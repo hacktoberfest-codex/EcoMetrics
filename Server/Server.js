@@ -1,21 +1,3 @@
-// const express=require("express")
-// const connect=require("./controllers/connect")
-// const routes=require("./routes/route")
-// const cors=require('cors')
-// const app=express() 
-// app.use(cors({ 
-// 	origin:'*'
-// })) 
-// app.use(express.json()) 
-// app.use(express.urlencoded({extended:true}))
-// const run=async()=>connect();
-// run()
-// app.get('/',(req,res)=>{
-// 	res.json({message:"hello"}) 
-// })
-// app.use('/login',routes)
-
-// app.listen(5000,()=>{console.log(`Server started @ http:/localhost`);})
 import express, { response } from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
@@ -42,6 +24,7 @@ const run=async()=>connect();
 run()
 
 app.use('/login',router)
+app.use('/',router)
 
 app.get("/aichatbot", async (req, res) => {
   res.status(200).send({
