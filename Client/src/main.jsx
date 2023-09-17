@@ -8,6 +8,8 @@ import Login from "../src/Auth/Login.jsx";
 import SignUp from "./Auth/SignUp.jsx";
 import Home from "./Home/Home.jsx";
 import Analysis from "./Components/Analysis/Analysis.jsx";
+import {Prevention} from "./Components/Prevention/Prevention.jsx";
+import {Shop} from "./Components/Shop/Shop.jsx";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -22,9 +24,19 @@ const router = createBrowserRouter([
                 element: <About />,
             },
             {
-                path: "Analysis",
+                path: "Analysis/:state",
                 element: <Analysis/>
+            },
+            {
+                path:"Prevention",
+                element: <Prevention/>
+            },
+            {
+                path:"shop",
+                element: <Shop/>
             }
+
+
 
         ],
     },

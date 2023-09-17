@@ -2,7 +2,7 @@ export function Details() {
     return (
         <>
             <article>
-                <header className="mx-auto mt-40 max-w-screen-lg bg-green-50 rounded-t-lg  pt-16 text-center shadow-lg">
+                <header className="mx-auto mt-40 max-w-screen-lg bg-green-50 rounded-t-lg  pt-16 text-center shadow-lg bg-cover bg-no-repeat  " style={{ backgroundImage: 'url(https://i.ibb.co/MSQ6NzK/india.png)' }}>
                     <p className="text-gray-500">Published April 4, 2022</p>
                     <h1 className="mt-2 text-4xl font-bold text-gray-900 sm:text-5xl">How we Calculate Air Quality Index
                         & Water Quality Index ?</h1>

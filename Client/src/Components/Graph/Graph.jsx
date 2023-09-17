@@ -1,13 +1,17 @@
-import {Data} from "../../Data/Data.js"
+// import {Data} from "../../Data/Data.js"
 import {ResponsiveLine} from "@nivo/line";
-export function Graph() {
+
+export function Graph(props) {
+    console.log("props.Data");
+    console.log(props.Data);
+
     return (
         <>
 
-            <div style={{ height: '400px' }}>
-                <h1 className = "flex item-center justify-center">Data</h1>
+            <div style={{ height: '400px' }} className={"bg-[#e7fdea]"}>
+                <h1 className = "flex item-center justify-center mt-10 text-4xl">Data Analysis  </h1>
                 <ResponsiveLine
-                    data={Data}
+                    data={props.Data}
                     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
                     yScale={{
