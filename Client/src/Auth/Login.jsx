@@ -1,51 +1,93 @@
 import {useState} from 'react';
 import {AiOutlineUser, AiOutlineLock} from 'react-icons/ai';
 import {Link} from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
+    const navigate=useNavigate()
+
+    // const handleFormSubmit=(e)=>{
+    //     console.log('working');
+    // }
+
 
     const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        const errors = {};
-        if (!username) {
-            errors.username = 'Username is required';
-        }
-        if (!password) {
-            errors.password = 'Password is required';
-        }
-        setErrors(errors);
+		e.preventDefault();
 
-        if (Object.keys(errors).length > 0) {
-            return;
-        }
 
-        const requestBody = {
-            email: username,
-            password: password
-        };
-        try {
-            const response = await fetch('http://localhost:5000/auth', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            });
+        const options={
+            method: "POST", // or 'PUT'
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name:username,
+                password:password
+            }),
+          }
+		try {
+            const sendData=await fetch('http://localhost:5000/login/auth',options)
+            const response=await sendData.json()
+            console.log(response);
+			// const response=await axios.post('/api/registerData', { email: email, password: pass });
+			// Handle success, e.g., show a success 
+			
+			setPassword("")
+			setUsername("")
+			if(response.message=="authorized"){
+				console.log('Credentials stored successfully');
+                alert('Welcome to DashBoard')
+                navigate('/')
+				// route.push('/login')
+			}
+		} catch (error) {
+			// Handle error, e.g., show an error message
+			console.error('Error storing credentials', error);
+		}
+	};
 
-            if (response.ok) {
-                // const data = await response.json();
-                // onLogin(data);
-            } else {
-                throw new Error('Login failed');
-            }
-        } catch (error) {
-            console.error('Login failed!', error);
-            setErrors({login: 'Invalid credentials. Please try again.'});
-        }
-    };
+
+    // const handleFormSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const errors = {};
+    //     if (!username) {
+    //         errors.username = 'Username is required';
+    //     }
+    //     if (!password) {
+    //         errors.password = 'Password is required';
+    //     }
+    //     setErrors(errors);
+
+    //     if (Object.keys(errors).length > 0) {
+    //         return;
+    //     }
+
+    //     const requestBody = {
+    //         email: username,
+    //         password: password
+    //     };
+    //     try {
+    //         const response = await fetch('http://localhost:5000/auth', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(requestBody)
+    //         });
+
+    //         if (response.ok) {
+    //             // const data = await response.json();
+    //             // onLogin(data);
+    //         } else {
+    //             throw new Error('Login failed');
+    //         }
+    //     } catch (error) {
+    //         console.error('Login failed!', error);
+    //         setErrors({login: 'Invalid credentials. Please try again.'});
+    //     }
+    // };
 
 
     return (
@@ -95,6 +137,7 @@ export default function Login() {
                                                     }`}
                                                     placeholder="john111"
                                                     value={username}
+                                                    name='username'
                                                     onChange={(e) => setUsername(e.target.value)}
                                                 />
                                             </div>
@@ -118,6 +161,7 @@ export default function Login() {
                                                     }`}
                                                     placeholder="************"
                                                     value={password}
+                                                    name='password'
                                                     onChange={(e) => setPassword(e.target.value)}
                                                 />
                                             </div>
