@@ -2,7 +2,7 @@ import mongoose from  'mongoose'
 const Schema = new mongoose.Schema({
 	name:{
 		type :String ,
-		required:[true,"Please add an username"],
+		required:[true,"Please add an Username"],
 		unique:true
 			
 	},
@@ -14,11 +14,11 @@ const Schema = new mongoose.Schema({
 	},
 	password: {
 		type: String,
-		required:[true,"Please add a name"]
+		required:[true,"Please add a Name"]
 	},
 	phone: {
 		type: Number,
-		required:[true,"Please add a Phone Number"]
+		required:[true,"Please add a Phone-Number"]
 	},
 });
 
